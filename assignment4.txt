@@ -1,0 +1,48 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverse(head):
+    new_head = None
+    current = head
+    
+    while current:
+        new_node = ListNode(current.val)
+        new_node.next = new_head
+        new_head = new_node
+        current = current.next
+    
+    return new_head
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def findIntersection(list1, list2):
+    dummy = ListNode()
+    current = dummy
+    while list1 and list2:
+        if list1.val < list2.val:
+            list1 = list1.next
+        elif list1.val > list2.val:
+            list2 = list2.next
+        else:
+            current.next = ListNode(list1.val)
+            current = current.next
+            list1 = list1.next
+            list2 = list2.next
+    
+    return dummy.next
+class DoublyListNode:
+    def __init__(self, val=0, prev=None, next=None):
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+def removeNode(node):
+    if node.prev:
+        node.prev.next = node.next
+    if node.next:
+        node.next.prev = node.prev
+
